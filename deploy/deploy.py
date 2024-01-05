@@ -7,23 +7,45 @@
 
 new_cluster_config = """
 {
-    "spark_version": "7.3.x-scala2.12",
-    "node_type_id": "i3.xlarge",
-    "aws_attributes": {
-      "availability": "ON_DEMAND"
+    "num_workers": 1,
+    "cluster_name": "Vavdi, Gregor's Personal Compute Cluster",
+    "spark_version": "14.1.x-scala2.12",
+    "spark_conf": {
+        "spark.databricks.cluster.profile": "singleNode",
+        "spark.master": "local[*, 4]"
     },
-    "num_workers": 2
+    "azure_attributes": {
+        "first_on_demand": 1,
+        "availability": "ON_DEMAND_AZURE",
+        "spot_bid_max_price": -1
+    },
+    "node_type_id": "Standard_DS3_v2",
+    "driver_node_type_id": "Standard_DS3_v2",
+    "ssh_public_keys": [],
+    "custom_tags": {
+        "ResourceClass": "SingleNode"
+    },
+    "spark_env_vars": {},
+    "autotermination_minutes": 4320,
+    "enable_elastic_disk": true,
+    "init_scripts": [],
+    "single_user_name": "gv5698@student.uni-lj.si",
+    "policy_id": "001D10C2B6F0F61B",
+    "enable_local_disk_encryption": false,
+    "data_security_mode": "LEGACY_SINGLE_USER_STANDARD",
+    "runtime_engine": "STANDARD",
+    "cluster_id": "1231-100841-kvdxk9zh"
 }
 """
 # Existing cluster ID where integration test will be executed
-existing_cluster_id = '0804-220509-stead130'
+existing_cluster_id = '1231-100841-kvdxk9zh'
 # Path to the notebook with the integration test
-notebook_path = '/test/unittest_model'
-repo_path = '/Repos/michael.shtelma@databricks.com/databricks_ml_demo'
+notebook_path = '/test/demo'
+repo_path = '/Repos/luka94vidic@gmail.com/databricks_ml_demo'
 
 
-repos_path_prefix='/Repos/michael.shtelma@databricks.com/databricks_ml_demo'
-git_url = 'https://github.com/mshtelma/databricks_ml_demo'
+repos_path_prefix='/Repos/luka94vidic@gmail.com/databricks_ml_demo'
+git_url = 'https://github.com/VidicL13/databricks_ml_demo'
 provider = 'gitHub'
 branch = 'main'
 
