@@ -40,7 +40,7 @@ new_cluster_config = """
 # Existing cluster ID where integration test will be executed
 existing_cluster_id = '1231-100841-kvdxk9zh'
 # Path to the notebook with the integration test
-notebook_path = '/test/unittest_model'
+notebook_path = '/test/unittest_model.py'
 repo_path = '/Repos/luka94vidic@gmail.com/databricks_ml_demo'
 
 
