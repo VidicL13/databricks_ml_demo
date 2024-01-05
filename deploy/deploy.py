@@ -94,11 +94,11 @@ repo_path = f'{repos_path_prefix}_{_b}_{str(datetime.now().microsecond)}'
 print('Checking out the following repo: ', repos_path_prefix)
 
 # Let's clone our GitHub Repo in Databricks using Repos API
-repo = repos_service.create_repo(url=git_url, provider=provider, path=repos_path_prefix)
+repo = repos_service.create_repo(url=git_url, provider=provider, path=repo_path)
 
 try:
   repos_service.update_repo(id=repo['id'], branch=branch)
-
+  print("updated repo ")
   #Let's create a jobs service to be able to start/stop Databricks jobs
   jobs_service = JobsService(api_client)
 
