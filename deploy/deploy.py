@@ -91,10 +91,10 @@ repos_service = ReposService(api_client)
 # Let's store the path for our new Repo
 _b = branch.replace('/','_')
 repo_path = f'{repos_path_prefix}_{_b}_{str(datetime.now().microsecond)}'
-print('Checking out the following repo: ', repo_path)
+print('Checking out the following repo: ', repos_path_prefix)
 
 # Let's clone our GitHub Repo in Databricks using Repos API
-repo = repos_service.create_repo(url=git_url, provider=provider, path=repo_path)
+repo = repos_service.create_repo(url=git_url, provider=provider, path=repos_path_prefix)
 
 try:
   repos_service.update_repo(id=repo['id'], branch=branch)
@@ -102,7 +102,7 @@ try:
   #Let's create a jobs service to be able to start/stop Databricks jobs
   jobs_service = JobsService(api_client)
 
-  notebook_task = {'notebook_path': repo_path + notebook_path}
+  notebook_task = {'notebook_path': repos_path_prefix + notebook_path}
   #new_cluster = json.loads(new_cluster_config)
 
   # Submit integration test job to Databricks REST API
